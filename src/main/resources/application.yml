@@ -1,0 +1,16 @@
+spring:
+  profiles:
+    active: dev
+logging:
+  level:
+    net:
+      engineeringdigest:
+        journalApp: DEBUG
+
+#logging:
+#  level:
+#    root: ERROR
+
+#logging:
+#  level:
+#    root: OFF
