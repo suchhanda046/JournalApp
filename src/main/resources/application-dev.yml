@@ -1,0 +1,10 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb+srv://test:Test123@cluster0.ddik82e.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+      database: journaldb
+      auto-index-creation: true
+server:
+  port: 8081
+  servlet:
+    context-path: /journal
