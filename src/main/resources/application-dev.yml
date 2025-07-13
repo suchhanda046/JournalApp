@@ -1,0 +1,28 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb+srv://test:Test123@cluster0.ddik82e.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+      database: journaldb
+      auto-index-creation: true
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: suchhanda.senapati@gmail.com
+    password: ftxuugsjxncenfec
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+  redis:
+    uri: redis://default:SYUAgl9GXdbOXdwGj8nw3eYVB998kye9@redis-17423.crce179.ap-south-1-1.ec2.redns.redis-cloud.com:17423
+
+server:
+  port: 8081
+  servlet:
+    context-path: /journal
+
+weather:
+  api:
+    key: c380b5d33c1557c2033428f1034108b9
