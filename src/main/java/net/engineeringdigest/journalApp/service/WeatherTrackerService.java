@@ -23,12 +23,27 @@ public class WeatherTrackerService {
     @Autowired
     AppCache appCache;
 
+    @Autowired
+    RedisService redisService;
+
 //    String url = "http://api.weatherstack.com/current?access_key=API_KEY&query=CITY";
 
     public WeatherResponse getTemp(String city){
-        String finalAPI = appCache.appCache.get(AppCache.keys.WEATHER_API.toString()).replace(Placeholders.API_KEY,weather_api_key).replace(Placeholders.CITY,city);
-        ResponseEntity<WeatherResponse> response = restTemplate.exchange(finalAPI, HttpMethod.GET,null, WeatherResponse.class);
-        return response.getBody();
+        WeatherResponse body = redisService.get(city,WeatherResponse.class);
+        if(body!=null){
+            return body;
+        }else{
+            String finalAPI = appCache.appCache.get(AppCache.keys.WEATHER_API.toString()).replace(Placeholders.API_KEY,weather_api_key).replace(Placeholders.CITY,city);
+            ResponseEntity<WeatherResponse> response = restTemplate.exchange(finalAPI, HttpMethod.GET,null, WeatherResponse.class);
+            body = response.getBody();
+            if(body!=null){
+                redisService.set(city,body,300l);
+            }
+            return body;
+        }
+
+
+
     }
 
 }

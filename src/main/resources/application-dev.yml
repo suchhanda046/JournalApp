@@ -15,6 +15,8 @@ spring:
           auth: true
           starttls:
             enable: true
+  redis:
+    uri: redis://default:SYUAgl9GXdbOXdwGj8nw3eYVB998kye9@redis-17423.crce179.ap-south-1-1.ec2.redns.redis-cloud.com:17423
 
 server:
   port: 8081
